@@ -96,6 +96,16 @@ def health():
     return {"status": "ok"}
 
 
+@app.get("/")
+def root():
+    return {
+        "service": "Hospital Intake API",
+        "status": "ok",
+        "health": "/api/health",
+        "doctors": "/api/doctors",
+    }
+
+
 @app.get("/api/doctors")
 def doctors():
     with lock:
